@@ -9,5 +9,5 @@ list[2].textContent='hello';
 list[1].style.backgroundColor='pink';
 for(i=0;i<list.length;i++){
     list[i].style.fontWeight='bold'
-}
+};
 
