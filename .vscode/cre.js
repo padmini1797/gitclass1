@@ -10,7 +10,11 @@ function onSubmit(e) {
         setTimeout(() => msg.remove(), 3000);
     }
     else{
-        localStorage.setItem('name',nameInput.value);
-        localStorage.setItem('email',emailInput.value);
+        let obj={
+            namei:nameInput.value,
+            emaili:emailInput.value
+        }
+        localStorage.setItem('details',JSON.stringify(obj));
+
+        }
     }
-}
