@@ -11,19 +11,23 @@ function onSubmit(e) {
         setTimeout(() => msg.remove(), 3000);
     }
     else{
-        var uk=document.createElement('LI');
-        newdiv.appendChild(uk);
+        var uel=document.createElement("LI");
+        var as=document.getElementById('nd');
         var obj={
             namei:nameInput.value,
             emaili:emailInput.value,
             phonei:mobInput.value
         };
         var t=document.createTextNode(`${obj.namei}-${obj.emaili}-${obj.phonei}`);
-        uk.append(t);
+        uel.appendChild(t);
+        as.appendChild(uel);
         localStorage.setItem(obj.emaili,JSON.stringify(obj));
-        
+        let delB = document.createElement("button");
+        delB.addEventListener("click", function() {
+        uel.remove();
+        localStorage.removeItem(obj.emaili);
+        })  
+        delB.innerHTML = "Delete"
+        uel.appendChild(delB); 
     }
-    
-    
-
 }
