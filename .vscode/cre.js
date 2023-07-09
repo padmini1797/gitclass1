@@ -13,6 +13,7 @@ function onSubmit(e) {
     else{
         var uel=document.createElement("LI");
         var as=document.getElementById('nd');
+        var usrOj=document.querySelectorAll('#li');
         var obj={
             namei:nameInput.value,
             emaili:emailInput.value,
@@ -23,11 +24,30 @@ function onSubmit(e) {
         as.appendChild(uel);
         localStorage.setItem(obj.emaili,JSON.stringify(obj));
         let delB = document.createElement("button");
+        let edB=document.createElement("button");
         delB.addEventListener("click", function() {
         uel.remove();
         localStorage.removeItem(obj.emaili);
-        })  
+        })
+        edB.addEventListener("click", function() {
+            let eB=[];
+            eB=uel.firstChild.textContent.split('-');
+            if(eB[1]==obj.emaili){
+            localStorage.removeItem(obj.emaili);
+            }
+            uel.remove();
+            let ni=document.getElementById('name');
+            let ei=document.getElementById('email');
+            let mi=document.getElementById('phone');
+            ni.value=eB[0];
+            ei.value=eB[1];
+            mi.value=eB[2];
+            
+            }) 
+        
         delB.innerHTML = "Delete"
         uel.appendChild(delB); 
+        edB.innerHTML = "EDIT"
+        uel.appendChild(edB); 
     }
 }
